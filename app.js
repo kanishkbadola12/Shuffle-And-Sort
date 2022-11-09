@@ -3,16 +3,24 @@
 const tableData = [1,2,3,4,5,6,7,8,9];
 
 /**
+ * Create table with intial data on page load
+ */
+window.onload = function() {
+    createTable(tableData);
+};
+
+/**
  * Shuffle tableData to any random order
  */
 function shuffleTableData() {
     const tableDataClone = [...tableData];
+
     for (let i = 0; i < tableDataClone.length; i++) {
         let j = Math.floor(Math.random() * (i + 1));               
         let temp = tableDataClone[i];
         tableDataClone[i] = tableDataClone[j];
         tableDataClone[j] = temp;
-    } 
+    }
     
     createTable(tableDataClone);
 }
@@ -25,10 +33,18 @@ function sortTableData() {
 }
 
 /**
+ * Check if data table exists or not in the View
+ * @returns {Boolean} 
+ */
+function isTableDataExists(){
+    return document.getElementById('dataTableView').innerHTML !== "";
+}
+
+/**
  * Create table from tableData and append it to the View
  * @param {Array} tableData - data for table to be created in shuffled or sorted order
  */
-function createTable(tableData) {
+ function createTable(tableData) {
     if (isTableDataExists()) {
         document.getElementById('dataTable').remove();
     }
@@ -55,13 +71,46 @@ function createTable(tableData) {
     }
 
     table.appendChild(tableBody);
-    document.getElementById('dataTableView').appendChild(table);      
+    document.getElementById('dataTableView').appendChild(table);
+    applyCellBackgroundColor(); 
 }
 
+
 /**
- * Extract errors messages from error
- * @returns {Boolean} If data table exists or not in the View
+ * Apply background color to every cell of the table as per their numeric value
  */
-function isTableDataExists(){
-    return document.getElementById('dataTableView').innerHTML !== "";
+function applyCellBackgroundColor() {
+    const dataTableCells = Array.from(document.querySelectorAll('td'));
+
+    dataTableCells.forEach(cell => {
+        switch(true) {
+            case cell.innerText === '1':
+                cell.style.backgroundColor = '#6F98A8';
+                break;
+            case cell.innerText === '2':
+                cell.style.backgroundColor = '#2B8EAD';
+                break;
+            case cell.innerText === '3':
+                cell.style.backgroundColor = '#2F454E';
+                break;
+            case cell.innerText === '4':
+                cell.style.backgroundColor = '#2B8EAD';
+                break;
+            case cell.innerText === '5':
+                cell.style.backgroundColor = '#2F454E';
+                break;
+            case cell.innerText === '6':
+                cell.style.backgroundColor = '#BFBFBF';
+                break;
+            case cell.innerText === '7':
+                cell.style.backgroundColor = '#BFBFBF';
+                break;
+            case cell.innerText === '8':
+                cell.style.backgroundColor = '#6F98A8';
+                break;
+            case cell.innerText === '9':
+                cell.style.backgroundColor = '#2F454E';
+                break;      
+        }
+    })
 }
