@@ -20,7 +20,7 @@ input[type=button] {
     border-bottom-style: solid;
     border-bottom-width: thick;
     border-bottom-color: #2B8EAD;
-  }
+}
 
 h1 {
     margin: 0;
@@ -47,7 +47,7 @@ h1 {
 
 #dataTableView td {
     height: 180px;
-    width: 300px;
+    width: 350px;
     text-align: center;
     font-size: 100px;
     color: #FFFFFF;
@@ -58,4 +58,118 @@ h1 {
     font-style: italic;
     text-align: center;
     margin-top: 1rem;
+}
+
+/* Responsive design for table and buttons */
+
+@media (max-width: 650px) {
+    body {
+        background-color: #FFFFFF;
+    }
+
+    h1 {
+        background-color: #333333;
+        color: #FFFFFF;
+    }
+
+    input[type=button] {
+        width: 10rem;
+    }
+
+    .shuffleAndSortBody {
+        flex-direction: column-reverse;
+    }
+
+    #actionButtons {
+        flex-direction: row;
+        justify-content: center;
+        margin: 1rem;
+        column-gap: 10px;
+    }
+
+    #dataTableView td {
+        width: 600px;
+        display: block;
+        text-align: center;
+        height: 40px;
+        font-size: 20px;
+        margin: 1vh 1vh 0 2vh;
+        text-align: center;
+        line-height: 40px;
+        color: #000000;
+    }
+
+    /* Set gradient to each cell as per the background color already applied to the cells with the mixture of #EFEFEF */
+
+    td[data-bg-color = '#6F98A8'] {
+        background: linear-gradient(to right, #6F98A8 2%, #EFEFEF 0%);
+    }
+
+    td[data-bg-color = '#2B8EAD'] {
+        background: linear-gradient(to right, #2B8EAD 2%, #EFEFEF 0%);
+    }
+
+    td[data-bg-color = '#2F454E'] {
+        background: linear-gradient(to right, #2F454E 2%, #EFEFEF 0%);
+    }
+
+    td[data-bg-color = '#BFBFBF'] {
+        background: linear-gradient(to right, #BFBFBF 2%, #EFEFEF 0%);
+    }
+}
+
+@media (max-width: 600px) {
+    #dataTableView td {
+        width: 550px;
+    }
+}
+
+@media (max-width: 550px) {
+    #dataTableView td {
+        width: 450px;
+    }
+}
+
+@media (max-width: 450px) {
+    #dataTableView td {
+        width: 350px;
+    }
+}
+
+@media (max-width: 360px) {
+    #dataTableView td {
+        width: 300px;
+    }
+}
+
+@media (max-width: 300px) {
+    #dataTableView td {
+        width: 250px;
+        height: 30px;
+        line-height: 30px;
+    }
+}
+
+@media (max-width: 260px) {
+    #dataTableView td {
+        width: 180px;
+    }
+    input[type=button] {
+        height: 10px;
+        line-height: 0;
+    }
+    #actionButtons {
+        flex-direction: column;
+        margin: 1rem;
+        row-gap: 5px;
+    }
+}
+
+@media (max-width: 180px) {
+    #dataTableView td {
+        width: 130px;
+    }
+    input[type=button] {
+        width: 7rem;
+    }
 }
